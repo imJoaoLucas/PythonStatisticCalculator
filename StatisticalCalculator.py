@@ -8,6 +8,10 @@ import math
 userEntryList = [] 
 
 def userEntry():
+    '''
+    This method receives the user numeric data input that will be used for the calculation
+    and it returns a list of these numbers
+    '''
     entry = "y"
     while entry != "":
         try:
@@ -19,6 +23,11 @@ def userEntry():
     return userEntryList
 
 def displayMenu():
+    '''
+    This method will be used to display the options for the user, so he can decided wich 
+    operations the program will execute and display the results.
+    It returns a list containing the option's numbers.
+    '''
     choice = 0
     measuresSelected = []
     while choice <1 or choice >5:
