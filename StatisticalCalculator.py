@@ -5,7 +5,24 @@ and statistics. It might receive some updates in the future.
 '''
 import math
 
+#Constants
+MEAN = 1 ; MEDIAN = 2 ; MODE = 3 ; VARIANCE = 4 ; STANDARD_DEVIATION = 5
+ROUND_COEFFICIENT = 10
+
 userEntryList = [] 
+
+def main():
+    userChoiceList = displayMenu()
+    if MEAN in userChoiceList:
+        meanCalculator()
+    if MEDIAN in userChoiceList:
+        medianCalculator() #TODO
+    if MODE in userChoiceList:
+        modeCalculator() #TODO
+    if VARIANCE in userChoiceList:
+        varianceCalculator() #TODO
+    if STANDARD_DEVIATION in userChoiceList:
+        standardDeviationCalculator() #TODO
 
 def userEntry():
     '''
@@ -55,4 +72,32 @@ def displayMenu():
         
         choice = 0
 
-displayMenu()
+def meanCalculator(valuesList):
+    '''
+    This function calculates the mean, it receives a list of numbers and returns a numeric value
+    '''
+    numSum = 0.0
+    counter = 0
+    for num in valuesList:
+        numSum += num
+        counter += 1
+    return numSum / counter
+
+def medianCalculator(valuesList):
+    '''
+    This function calculates the median, it receives a list of numbers and returns value from the list
+    '''
+    if len(valuesList) % 2 == 0:
+        value1 = len(valuesList) // 2
+        median = (valuesList[value1] + valuesList[value1 - 1]) / 2
+    else:
+        value1 = len(valuesList) // 2
+        median = valuesList[value1]
+        
+    return median
+        
+myList = [1,2,3,4,5,6,7,8,9]
+for i in range(len(myList)):
+    print(f'{myList[i]} " ---> " {i}')
+
+print(f'\n\nThe median is: {medianCalculator(myList)}')
