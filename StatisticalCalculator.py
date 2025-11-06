@@ -95,7 +95,29 @@ def medianCalculator(valuesList):
         median = valuesList[value1]
         
     return median
-        
+
+'''
+Functions that still need to be implemented in the future...
+'''
+
+#def modeCalculator(valuesList):
+    
+    #TODO - implementation
+    
+#def varianceCalculator(valuesList, mean):
+
+    #TODO - implementation
+    
+#def standardDeviationCalculator(variance):
+
+    #TODO - implementation
+    
+#def coeficientOfVariation(standardDeviation, mean)
+
+    #TODO = implementation
+
+#def zScoreCalculator(valuesList, mean, standardDeviation)
+       
 myList = [1,2,3,4,5,6,7,8,9]
 for i in range(len(myList)):
     print(f'{myList[i]} " ---> " {i}')
