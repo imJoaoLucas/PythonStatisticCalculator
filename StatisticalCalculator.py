@@ -104,22 +104,64 @@ Functions that still need to be implemented in the future...
     
     #TODO - implementation
     
-#def varianceCalculator(valuesList, mean):
-
-    #TODO - implementation
+def varianceCalculator(valuesList, mean):
     
-#def standardDeviationCalculator(variance):
-
-    #TODO - implementation
+    accumulator = 0
     
-#def coeficientOfVariation(standardDeviation, mean)
+    for i in valuesList:
+        accumulator += pow(i - mean, 2)
+        
+    return accumulator / (len(valuesList) - 1)
 
-    #TODO = implementation
+    
+def standardDeviationCalculator(variance):
 
-#def zScoreCalculator(valuesList, mean, standardDeviation)
+    stDev = pow(variance, 0.5)
+    
+    return stDev
+    
+def coeficientOfVariation(standardDeviation, mean):
+
+    cv = standardDeviation / mean
+    
+    return cv
+
+def zScoreCalculator(xNumber, mean, standardDeviation):
+    
+    zScore = (xNumber - mean) / standardDeviation
+    
+    return zScore
+
+def firstQuartileCalculator(valuesList):
+    
+    firstQuartilePosition = len(valuesList) * 0.25
+    
+    if firstQuartilePosition % 2 == 0:
+        return valuesList[firstQuartilePosition - 1] #I need to do it -1 because lists start on 0
+    else:
+        oddFirstQuartile = int(firstQuartilePosition) #It was suposed to be rounded to the next value, but lists start on 0
+        return valuesList[oddFirstQuartile]
        
-myList = [1,2,3,4,5,6,7,8,9]
+myList = [1,2,3,4,5,6,7,8,9,10,11,12]
 for i in range(len(myList)):
     print(f'{myList[i]} " ---> " {i}')
 
 print(f'\n\nThe median is: {medianCalculator(myList)}')
+
+mean = meanCalculator(myList)
+print(f'\nThe mean is: {mean}')
+
+variance = varianceCalculator(myList,mean)
+print(f'\nThe variance is: {variance}')
+
+stDev = standardDeviationCalculator(variance)
+print(f'\nThe standard deviation is: {stDev}')
+
+cv = coeficientOfVariation(stDev, mean)
+print(f'\nThe coeficient of variation is: {cv}')
+
+zScore = zScoreCalculator(3, mean, stDev)
+print(f'\nThe Z-Score for "num - 3" is: {zScore}')
+
+firstQuartile = firstQuartileCalculator(myList)
+print(f'\nThe Q1 is: {firstQuartile}')
