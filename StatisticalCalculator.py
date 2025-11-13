@@ -141,6 +141,29 @@ def firstQuartileCalculator(valuesList):
     else:
         oddFirstQuartile = int(firstQuartilePosition) #It was suposed to be rounded to the next value, but lists start on 0
         return valuesList[oddFirstQuartile]
+    
+def thirdQuartileCalculator(valuesList):
+    
+    thirdQuartilePosition = len(valuesList) * 0.75
+    
+    if thirdQuartilePosition % 2 == 0:
+        return valuesList[thirdQuartilePosition - 1]
+    else:
+        oddThirdQuartile = int(thirdQuartilePosition)
+        return valuesList[oddThirdQuartile]
+
+def iqrCalculator(firstQuartile, thirdQuartile):
+    
+    return thirdQuartile - firstQuartile
+
+def lowerOutliarBoundary(firstQuartile, IQR):
+    
+    return firstQuartile - IQR * 1.5
+
+def upperOutliarBoundary(thirdQuartile, IQR):
+    
+    return firstQuartile + IQR * 1.5
+    
        
 myList = [1,2,3,4,5,6,7,8,9,10,11,12]
 for i in range(len(myList)):
@@ -165,3 +188,15 @@ print(f'\nThe Z-Score for "num - 3" is: {zScore}')
 
 firstQuartile = firstQuartileCalculator(myList)
 print(f'\nThe Q1 is: {firstQuartile}')
+
+thirdQuartile = thirdQuartileCalculator(myList)
+print(f'\nThe Q3 is: {thirdQuartile}')
+
+IQR = iqrCalculator(firstQuartile, thirdQuartile)
+print(f'\nThe inter quartile range is: {IQR}')
+
+lowerOutliarBoundary = lowerOutliarBoundary(firstQuartile, IQR)
+print(f'\nThe lower outliar boundary is: {lowerOutliarBoundary}')
+
+upperOutliarBoundary = upperOutliarBoundary(thirdQuartile, IQR)
+print(f'\nThe upper outliar boundary is: {upperOutliarBoundary}')
